@@ -35,7 +35,7 @@ func MigrateCreate(name string) error {
 }
 
 // MigrateUp migrate up
-func MigrateUp(config *dbex.Config, n int) error {
+func MigrateUp(config dbex.Config, n int) error {
 	// Create migrate dir
 	if err := os.MkdirAll(migratePath, os.ModePerm); err != nil {
 		return err
@@ -74,7 +74,7 @@ func MigrateUp(config *dbex.Config, n int) error {
 }
 
 // MigrateDown migrate down
-func MigrateDown(config *dbex.Config, n int) error {
+func MigrateDown(config dbex.Config, n int) error {
 	// Create migrate dir
 	if err := os.MkdirAll(migratePath, os.ModePerm); err != nil {
 		return err
@@ -113,7 +113,7 @@ func MigrateDown(config *dbex.Config, n int) error {
 }
 
 // MigrateDrop migrate drop
-func MigrateDrop(config *dbex.Config) error {
+func MigrateDrop(config dbex.Config) error {
 	// Create migrate dir
 	if err := os.MkdirAll(migratePath, os.ModePerm); err != nil {
 		return err

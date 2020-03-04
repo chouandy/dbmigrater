@@ -7,9 +7,9 @@ import (
 )
 
 // CreateDatabase create database
-func CreateDatabase(config *dbex.Config) error {
+func CreateDatabase(config dbex.Config) error {
 	// New db connection
-	conn, err := sql.Open(config.Driver, config.DataSourceWithoutDatabase())
+	conn, err := sql.Open(config.GetDriver(), config.DataSourceWithoutDatabase())
 	if err != nil {
 		return err
 	}
@@ -25,9 +25,9 @@ func CreateDatabase(config *dbex.Config) error {
 }
 
 // DropDatabase drop database
-func DropDatabase(config *dbex.Config) error {
+func DropDatabase(config dbex.Config) error {
 	// New db connection
-	conn, err := sql.Open(config.Driver, config.DataSourceWithoutDatabase())
+	conn, err := sql.Open(config.GetDriver(), config.DataSourceWithoutDatabase())
 	if err != nil {
 		return err
 	}
