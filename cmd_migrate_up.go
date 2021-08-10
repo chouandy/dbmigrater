@@ -44,8 +44,7 @@ func (c *MigrateUpCommand) Run(args []string) int {
 
 	// New DB Config
 	fmt.Print("New DB Config...")
-	config, err := dbex.NewConfig()
-	if err != nil {
+	if err := dbex.NewConfig(); err != nil {
 		fmt.Println(err)
 		return 1
 	}
@@ -53,7 +52,7 @@ func (c *MigrateUpCommand) Run(args []string) int {
 
 	// Migrate Up
 	fmt.Print("Migrate Up...")
-	if err := MigrateUp(config, c.Number); err != nil {
+	if err := MigrateUp(dbex.GetConfig(), c.Number); err != nil {
 		if strings.Contains(err.Error(), "file does not exist") {
 			fmt.Println("no migrations")
 			return 0

@@ -1,14 +1,13 @@
 module github.com/chouandy/dbmigrater
 
-go 1.12
+go 1.16
 
 require (
-	github.com/chouandy/go-sdk v0.0.0-20200304175702-19748909853b
-	github.com/go-sql-driver/mysql v1.5.0
-	github.com/golang-migrate/migrate/v4 v4.7.1
-	github.com/lib/pq v1.3.0
-	github.com/mattn/go-colorable v0.1.0 // indirect
-	github.com/mitchellh/cli v1.0.0
+	github.com/chouandy/go-sdk v1.1.0
+	github.com/go-sql-driver/mysql v1.6.0
+	github.com/golang-migrate/migrate/v4 v4.14.1
+	github.com/lib/pq v1.10.2
+	github.com/mitchellh/cli v1.1.2
 )
 
 // replace github.com/chouandy/go-sdk => ../go-sdk

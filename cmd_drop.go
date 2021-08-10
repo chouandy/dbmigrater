@@ -28,8 +28,7 @@ Usage: dbmigrater drop
 func (c *DropCommand) Run(args []string) int {
 	// New DB Config
 	fmt.Print("New DB Config...")
-	config, err := dbex.NewConfig()
-	if err != nil {
+	if err := dbex.NewConfig(); err != nil {
 		fmt.Println(err)
 		return 1
 	}
@@ -37,7 +36,7 @@ func (c *DropCommand) Run(args []string) int {
 
 	// Drop Database
 	fmt.Print("Drop Database...")
-	if err := DropDatabase(config); err != nil {
+	if err := DropDatabase(dbex.GetConfig()); err != nil {
 		if strings.Contains(err.Error(), "database doesn't exist") {
 			fmt.Println("database doesn't exist")
 			return 0

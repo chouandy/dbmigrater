@@ -28,8 +28,7 @@ Usage: dbmigrater create
 func (c *CreateCommand) Run(args []string) int {
 	// New DB Config
 	fmt.Print("New DB Config...")
-	config, err := dbex.NewConfig()
-	if err != nil {
+	if err := dbex.NewConfig(); err != nil {
 		fmt.Println(err)
 		return 1
 	}
@@ -37,7 +36,7 @@ func (c *CreateCommand) Run(args []string) int {
 
 	// Create Database
 	fmt.Print("Create Database...")
-	if err := CreateDatabase(config); err != nil {
+	if err := CreateDatabase(dbex.GetConfig()); err != nil {
 		if strings.Contains(err.Error(), "database exists") {
 			fmt.Println("database already exists")
 			return 0
